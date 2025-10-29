@@ -11,7 +11,7 @@ Cheat base for Counter-Strike 2.
 1. Download [CS2-Cheat-Base source](https://github.com/KisSsArt/CS2-Cheat-Base/archive/master.zip).
 2. Compile the project using Visual Studio (use build configuration `Release | x64`).
 3. Find `Cheat-Base.dll` into `_output` folder.
-4. Inject 'Cheat-Base.dll' into `cs2.exe` process (MANUAL MAP ONLY).
+4. Inject `Cheat-Base.dll` into `cs2.exe` process (MANUAL MAP ONLY).
 5. Enjoy!
 
 ⚠️ **If you use cheats, your account may be banned. Use at your own risk!**
