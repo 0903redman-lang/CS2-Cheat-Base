@@ -1,0 +1,32 @@
+name: Universal Build
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Run Build
+      run: |
+        $solution = Get-ChildItem -Recurse -Filter "*.sln" | Select-Object -First 1
+        if ($solution) {
+          msbuild $solution.FullName /p:Configuration=Release /p:Platform=x64
+        } else {
+          cmake -B build
+          cmake --build build --config Release
+        }
+
+    - name: Upload Result
+      uses: actions/upload-artifact@v4
+      with:
+        name: my-project-dll
+        path: |
+          **/Release/*.dll
+          build/Release/*.dll
